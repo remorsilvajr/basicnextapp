@@ -27,17 +27,17 @@ export const authOptions = {
         bearer(),
     ],
 
-    secret: process.env.BETTER_AUTH_SECRET,
+    secret: process.env.BETTER_AUTH_SECRET || "oY3LBSAP3ExKApieB02xirc8lePYUtAf",
 
     // ✅ Production / serverless settings
-    baseURL: process.env.BETTER_AUTH_URL, // Add this in Vercel env
+    baseURL: process.env.BETTER_AUTH_URL || `https://${process.env.VERCEL_URL}` || "http://localhost:3000",
     trustedOrigins: [
         "http://localhost:3000",
-        "https://basicnextapp.vercel.app",
+        "https://basicnextapp-eight.vercel.app/",
     ],
-    // advanced: {
-    //     trustHost: true, // Important for Vercel proxy headers
-    // },
+     //advanced: {
+      //  trustHost: true,
+     //},
 } satisfies BetterAuthOptions;
 
 export const auth = betterAuth(authOptions);
